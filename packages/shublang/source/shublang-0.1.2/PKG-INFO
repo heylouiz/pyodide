@@ -1,0 +1,18 @@
+Metadata-Version: 1.1
+Name: shublang
+Version: 0.1.2
+Summary: Shublang - Data Extraction DSL
+Home-page: UNKNOWN
+Author: Akshay
+Author-email: akshay@scrapinghub.com
+License: BSD
+Description: UNKNOWN
+Platform: Any
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
