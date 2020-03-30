@@ -1,0 +1,9 @@
+package:
+  name: tzlocal
+  version: 2.0.0
+source:
+  sha256: 949b9dd5ba4be17190a80c0268167d7e6c92c62b30026cf9764caf3e308e5590
+  url: https://files.pythonhosted.org/packages/c6/52/5ec375d4efcbe4e31805f3c4b301bdfcff9dcbdb3605d4b79e117a16b38d/tzlocal-2.0.0.tar.gz
+test:
+  imports:
+  - tzlocal
