@@ -83,6 +83,8 @@ build/pyodide.asm.js: src/main.bc src/jsimport.bc src/jsproxy.bc src/js2python.b
 	$(CXX) -s EXPORT_NAME="'pyodide'" -o build/pyodide.asm.html $(filter %.bc,$^) \
 		$(LDFLAGS) -s FORCE_FILESYSTEM=1
 	rm build/pyodide.asm.html
+	# Fix a bug in emscript, see https://github.com/iodide-project/pyodide/issues/507
+	sed -i -e "s/\(return Module\[prop\].apply(null,arguments)\)//" $@
 
 
 env:
