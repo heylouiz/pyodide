@@ -1,0 +1,15 @@
+package:
+  name: parsel
+  version: 1.5.2
+source:
+  sha256: 4da4262ba4605573b6b72a5f557616a2fc9dee7a47a1efad562752a28d366723
+  url: https://files.pythonhosted.org/packages/1d/fe/9a98cffa4abe7ade88b19a7173801d300900ead2407aba9c52059d03c54f/parsel-1.5.2.tar.gz
+requirements:
+  run:
+    - w3lib
+    - lxml
+    - cssselect
+test:
+  imports:
+  - parsel
+  - parsel.Selector

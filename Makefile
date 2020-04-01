@@ -7,6 +7,8 @@ FILEPACKAGER=$(PYODIDE_ROOT)/tools/file_packager.py
 CPYTHONROOT=cpython
 CPYTHONLIB=$(CPYTHONROOT)/installs/python-$(PYVERSION)/lib/python$(PYMINOR)
 
+LIBXML=libxml/libxml2-2.9.9/.libs/libxml2.a
+LIBXSLT=libxslt/libxslt-1.1.33/libxslt/.libs/libxslt.a
 LZ4LIB=lz4/lz4-1.8.3/lib/liblz4.a
 CLAPACK=CLAPACK/CLAPACK-WA/lapack_WA.bc
 
@@ -81,6 +83,8 @@ build/pyodide.asm.js: src/main.bc src/jsimport.bc src/jsproxy.bc src/js2python.b
 	$(CXX) -s EXPORT_NAME="'pyodide'" -o build/pyodide.asm.html $(filter %.bc,$^) \
 		$(LDFLAGS) -s FORCE_FILESYSTEM=1
 	rm build/pyodide.asm.html
+	# Fix a bug in emscript, see https://github.com/iodide-project/pyodide/issues/507
+	sed -i -e "s/\(return Module\[prop\].apply(null,arguments)\)//" $@
 
 
 env:
@@ -150,6 +154,8 @@ clean:
 	make -C six clean
 	make -C jedi clean
 	make -C parso clean
+	make -C libxslt clean
+	make -C libxml clean
 	echo "The Emsdk, CPython and CLAPACK are not cleaned. cd into those directories to do so."
 
 
@@ -229,6 +235,14 @@ $(LZ4LIB):
 	make -C lz4
 
 
+$(LIBXML): $(CPYTHONLIB)
+	make -C libxml
+
+
+$(LIBXSLT): $(CPYTHONLIB) $(LIBXML)
+	make -C libxslt
+
+
 $(SIX_LIBS): $(CPYTHONLIB)
 	make -C six
 
@@ -245,7 +259,7 @@ $(CLAPACK): $(CPYTHONLIB)
 	make -C CLAPACK
 
 
-build/packages.json: $(CLAPACK) FORCE
+build/packages.json: $(CLAPACK) $(LIBXML) $(LIBXSLT) FORCE
 	make -C packages
 
 emsdk/emsdk/.complete:

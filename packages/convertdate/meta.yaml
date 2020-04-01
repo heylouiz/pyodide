@@ -1,0 +1,9 @@
+package:
+  name: convertdate
+  version: 2.2.0
+source:
+  sha256: 9d2b0cd8d5382d2458d4cfa59665abba398a9e9bfd3a01c6f61b7b47768d28bf
+  url: https://files.pythonhosted.org/packages/92/c1/1125eba52ce9bccf783f0640eaad39ffa6e4271dcf37d19438c2ef115233/convertdate-2.2.0.tar.gz
+test:
+  imports:
+  - convertdate
