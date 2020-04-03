@@ -1,0 +1,16 @@
+package:
+  name: shublang
+  version: 0.1.2
+source:
+  path: source/shublang-0.1.2
+requirements:
+  run:
+  - dateparser
+  - jmespath
+  - parsel
+  - pipe
+  - price-parser
+  - w3lib
+test:
+  imports:
+  - shublang

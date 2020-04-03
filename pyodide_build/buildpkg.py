@@ -64,7 +64,7 @@ def download_and_extract(buildpath, packagedir, pkg, args):
         srcdir = Path(pkg['source']['path'])
 
         if not srcdir.is_dir():
-            raise ValueError("'path' must point to a path")
+            raise ValueError("'path' must point to a path. PKG: %s" % pkg)
 
         if not srcpath.is_dir():
             shutil.copytree(srcdir, srcpath)
