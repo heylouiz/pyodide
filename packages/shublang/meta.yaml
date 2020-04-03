@@ -2,7 +2,7 @@ package:
   name: shublang
   version: 0.1.2
 source:
-  path: /src/packages/shublang/source/shublang-0.1.2
+  path: source/shublang-0.1.2
 requirements:
   run:
   - dateparser
